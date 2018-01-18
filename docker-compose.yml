@@ -1,14 +1,14 @@
 version: '2'
 services:
-    mysql:
-        image: mysql:5.7
-        env_file:
-            - ./mysql.env
+    mongodb:
+        image: mongo:latest
+        ports:
+            - 27017:27017
         volumes:
-            - ./storage/mysql:/var/lib/mysql
-    web:
+            - ./storage/mongodb:/data/db
+    web_mongo:
         build: .
-        container_name: web
+        container_name: web_mongo
         ports:
             - 80:80
         volumes:
